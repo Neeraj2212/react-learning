@@ -18,10 +18,8 @@ import {
 } from 'reactstrap';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 
-const maxLength = (len) => (val) => {
-	console.log(val + ' ' + !val);
-	return !val || val.length <= len;
-};
+const maxLength = (len) => (val) => !val || val.length <= len;
+
 const minLength = (len) => (val) => val && val.length >= len;
 
 class CommentForm extends Component {
