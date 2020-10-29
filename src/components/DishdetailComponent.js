@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 import {
 	Card,
 	CardImg,
@@ -178,38 +179,52 @@ function RenderComment({ comment, dishId, addComment }) {
 	);
 }
 const Dishdetail = (props) => {
-	const dish = props.dish;
-	if (dish == null) {
-		return <div></div>;
-	}
-	const dishCard = <RenderDish dish={props.dish} />;
-	const dishComments = (
-		<RenderComment
-			comment={props.comments}
-			addComment={props.addComment}
-			dishId={props.dish.id}
-		/>
-	);
-	return (
-		<div className="container">
-			<div className="row">
-				<Breadcrumb>
-					<BreadcrumbItem>
-						<Link to="/menu">Menu</Link>
-					</BreadcrumbItem>
-					<BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
-				</Breadcrumb>
-				<div className="col-12">
-					<h3>{props.dish.name}</h3>
-					<hr />
+	if (props.isLoading) {
+		return (
+			<div className="container">
+				<div className="row">
+					<Loading />
 				</div>
 			</div>
-			<div className="row ">
-				{dishCard}
-				{dishComments}
+		);
+	} else if (props.errMess) {
+		return (
+			<div className="container">
+				<div className="row">
+					<h4>{props.errMess}</h4>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	} else if (props.dish != null) {
+		const dishCard = <RenderDish dish={props.dish} />;
+		const dishComments = (
+			<RenderComment
+				comment={props.comments}
+				addComment={props.addComment}
+				dishId={props.dish.id}
+			/>
+		);
+		return (
+			<div className="container">
+				<div className="row">
+					<Breadcrumb>
+						<BreadcrumbItem>
+							<Link to="/menu">Menu</Link>
+						</BreadcrumbItem>
+						<BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+					</Breadcrumb>
+					<div className="col-12">
+						<h3>{props.dish.name}</h3>
+						<hr />
+					</div>
+				</div>
+				<div className="row ">
+					{dishCard}
+					{dishComments}
+				</div>
+			</div>
+		);
+	}
 };
 
 export default Dishdetail;
