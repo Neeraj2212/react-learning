@@ -18,6 +18,7 @@ import {
 	BreadcrumbItem,
 	Col,
 } from 'reactstrap';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -141,13 +142,20 @@ function RenderDish({ dish }) {
 	if (dish != null)
 		return (
 			<div className="col-12 col-md-5 m-1">
-				<Card>
-					<CardImg top src={baseUrl + dish.image} alt={dish.name} />
-					<CardBody>
-						<CardTitle>{dish.name}</CardTitle>
-						<CardText>{dish.description}</CardText>
-					</CardBody>
-				</Card>
+				<FadeTransform
+					in
+					transformProps={{
+						exitTransform: 'scale(0.5) translateY(-50%)',
+					}}
+				>
+					<Card>
+						<CardImg top src={baseUrl + dish.image} alt={dish.name} />
+						<CardBody>
+							<CardTitle>{dish.name}</CardTitle>
+							<CardText>{dish.description}</CardText>
+						</CardBody>
+					</Card>
+				</FadeTransform>
 			</div>
 		);
 	else return <div></div>;
@@ -156,18 +164,20 @@ function RenderDish({ dish }) {
 function RenderComment({ comment, dishId, postComment }) {
 	const comments = comment.map((desc) => {
 		return (
-			<li key={desc.id}>
-				<p>{desc.comment}</p>
+			<Fade in>
+				<li key={desc.id}>
+					<p>{desc.comment}</p>
 
-				<p>
-					-- {desc.author}, &nbsp;
-					{new Intl.DateTimeFormat('en-US', {
-						year: 'numeric',
-						month: 'short',
-						day: '2-digit',
-					}).format(new Date(Date.parse(desc.date)))}
-				</p>
-			</li>
+					<p>
+						-- {desc.author}, &nbsp;
+						{new Intl.DateTimeFormat('en-US', {
+							year: 'numeric',
+							month: 'short',
+							day: '2-digit',
+						}).format(new Date(Date.parse(desc.date)))}
+					</p>
+				</li>
+			</Fade>
 		);
 	});
 
