@@ -15,6 +15,7 @@ import {
 	fetchComments,
 	fetchPromos,
 	fetchLeaders,
+	postFeedback,
 } from '../redux/ActionCreators';
 
 import { actions } from 'react-redux-form';
@@ -39,6 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
 	fetchComments: () => dispatch(fetchComments()),
 	fetchPromos: () => dispatch(fetchPromos()),
 	fetchLeaders: () => dispatch(fetchLeaders()),
+	postFeedback: (values) => dispatch(postFeedback(values)),
 });
 
 class Main extends Component {
@@ -118,7 +120,10 @@ class Main extends Component {
 								exact
 								path="/contactus"
 								component={() => (
-									<Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+									<Contact
+										resetFeedbackForm={this.props.resetFeedbackForm}
+										postFeedback={this.props.postFeedback}
+									/>
 								)}
 							/>
 							<Redirect to="/home" />
