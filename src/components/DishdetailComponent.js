@@ -162,24 +162,28 @@ function RenderDish({ dish }) {
 }
 
 function RenderComment({ comment, dishId, postComment }) {
-	const comments = comment.map((desc) => {
-		return (
-			<Fade in>
-				<li key={desc.id}>
-					<p>{desc.comment}</p>
+	const comments = (
+		<Stagger in>
+			{comment.map((desc) => {
+				return (
+					<Fade in>
+						<li key={desc.id}>
+							<p>{desc.comment}</p>
 
-					<p>
-						-- {desc.author}, &nbsp;
-						{new Intl.DateTimeFormat('en-US', {
-							year: 'numeric',
-							month: 'short',
-							day: '2-digit',
-						}).format(new Date(Date.parse(desc.date)))}
-					</p>
-				</li>
-			</Fade>
-		);
-	});
+							<p>
+								-- {desc.author}, &nbsp;
+								{new Intl.DateTimeFormat('en-US', {
+									year: 'numeric',
+									month: 'short',
+									day: '2-digit',
+								}).format(new Date(Date.parse(desc.date)))}
+							</p>
+						</li>
+					</Fade>
+				);
+			})}
+		</Stagger>
+	);
 
 	return (
 		<div className="col-12 col-md-5 m-1">
