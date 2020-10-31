@@ -9,6 +9,8 @@ import {
 } from 'reactstrap';
 import { baseUrl } from '../shared/baseUrl';
 import { Link } from 'react-router-dom';
+import { Stagger, Fade } from 'react-animation-components';
+import { Loading } from './LoadingComponent';
 
 function RenderLeader(props) {
 	return (
@@ -32,10 +34,36 @@ function RenderLeader(props) {
 }
 
 function About(props) {
-	const leaders = props.leaders.map((leader) => {
-		return <RenderLeader leader={leader} />;
-	});
-
+	var leaders;
+	if (props.isLoading) {
+		leaders = (
+			<div className="container">
+				<div className="row">
+					<Loading />
+				</div>
+			</div>
+		);
+	} else if (props.errMess) {
+		leaders = (
+			<div className="container">
+				<div className="row">
+					<h4>{props.errMess}</h4>
+				</div>
+			</div>
+		);
+	} else {
+		leaders = (
+			<Stagger in>
+				{props.leaders.map((leader) => {
+					return (
+						<Fade in>
+							<RenderLeader leader={leader} />
+						</Fade>
+					);
+				})}
+			</Stagger>
+		);
+	}
 	return (
 		<div className="container">
 			<div className="row">
@@ -107,6 +135,7 @@ function About(props) {
 					</Card>
 				</div>
 			</div>
+
 			<div className="row row-content">
 				<div className="col-12">
 					<h2>Corporate Leadership</h2>
