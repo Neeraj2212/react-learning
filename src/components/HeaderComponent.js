@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { imageUrl } from "../shared/baseUrl";
 import {
 	Navbar,
 	NavbarBrand,
@@ -16,7 +17,7 @@ import {
 	FormGroup,
 	Input,
 	Label,
-} from 'reactstrap';
+} from "reactstrap";
 
 class Header extends Component {
 	constructor(props) {
@@ -47,11 +48,11 @@ class Header extends Component {
 	handleLogin(event) {
 		this.toggleModal();
 		alert(
-			'Username: ' +
+			"Username: " +
 				this.username.value +
-				' Password: ' +
+				" Password: " +
 				this.password.value +
-				' Remember: ' +
+				" Remember: " +
 				this.remember.checked
 		);
 		event.preventDefault();
@@ -62,9 +63,9 @@ class Header extends Component {
 			<React.Fragment>
 				<Navbar dark expand="md">
 					<div className="container">
-						<NavbarBrand className="mr-auto" href={'/'}>
+						<NavbarBrand className="mr-auto" href={"/"}>
 							<img
-								src="assets/images/logo.png"
+								src={imageUrl + "/images/logo.png"}
 								alt="logo"
 								height="30"
 								width="41"

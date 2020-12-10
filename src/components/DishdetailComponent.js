@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Loading } from "./LoadingComponent";
+import { imageUrl } from "../shared/baseUrl";
 import {
 	Card,
 	CardImg,
@@ -17,9 +17,9 @@ import {
 	Breadcrumb,
 	BreadcrumbItem,
 	Col,
-} from 'reactstrap';
-import { FadeTransform, Fade, Stagger } from 'react-animation-components';
-import { LocalForm, Control, Errors } from 'react-redux-form';
+} from "reactstrap";
+import { FadeTransform, Fade, Stagger } from "react-animation-components";
+import { LocalForm, Control, Errors } from "react-redux-form";
 
 const maxLength = (len) => (val) => !val || val.length <= len;
 
@@ -100,8 +100,8 @@ class CommentForm extends Component {
 										model=".author"
 										show="touched"
 										messages={{
-											minLength: 'Must be greater than 2 numbers',
-											maxLength: 'Must be 15 numbers or less',
+											minLength: "Must be greater than 2 numbers",
+											maxLength: "Must be 15 numbers or less",
 										}}
 									></Errors>
 								</Col>
@@ -145,11 +145,11 @@ function RenderDish({ dish }) {
 				<FadeTransform
 					in
 					transformProps={{
-						exitTransform: 'scale(0.5) translateY(-50%)',
+						exitTransform: "scale(0.5) translateY(-50%)",
 					}}
 				>
 					<Card>
-						<CardImg top src={baseUrl + dish.image} alt={dish.name} />
+						<CardImg top src={imageUrl + dish.image} alt={dish.name} />
 						<CardBody>
 							<CardTitle>{dish.name}</CardTitle>
 							<CardText>{dish.description}</CardText>
@@ -172,10 +172,10 @@ function RenderComment({ comment, dishId, postComment }) {
 
 							<p>
 								-- {desc.author}, &nbsp;
-								{new Intl.DateTimeFormat('en-US', {
-									year: 'numeric',
-									month: 'short',
-									day: '2-digit',
+								{new Intl.DateTimeFormat("en-US", {
+									year: "numeric",
+									month: "short",
+									day: "2-digit",
 								}).format(new Date(Date.parse(desc.date)))}
 							</p>
 						</li>

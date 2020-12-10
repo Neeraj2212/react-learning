@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer(props) {
 	return (
@@ -36,7 +36,7 @@ function Footer(props) {
 							<br />
 							<i className="fa fa-fax fa-lg"></i>: +852 8765 4321
 							<br />
-							<i className="fa fa-envelope fa-lg"></i>:{' '}
+							<i className="fa fa-envelope fa-lg"></i>:{" "}
 							<a href="mailto:confusion@food.net">confusion@food.net</a>
 						</address>
 					</div>
@@ -79,7 +79,7 @@ function Footer(props) {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-auto">
+					<div className="col-auto" style={{ marginTop: "50px" }}>
 						<p>© Copyright 2018 Ristorante Con Fusion</p>
 					</div>
 				</div>

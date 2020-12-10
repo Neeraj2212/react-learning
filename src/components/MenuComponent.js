@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Loading } from "./LoadingComponent";
+import { imageUrl } from "../shared/baseUrl";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -9,14 +9,14 @@ import {
 	CardImg,
 	CardImgOverlay,
 	CardTitle,
-} from 'reactstrap';
+} from "reactstrap";
 
 function RenderMenuItem({ dish, onClick }) {
 	//props can be used as parameter also
 	return (
 		<Link to={`/menu/${dish.id}`}>
 			<Card key={dish.id}>
-				<CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+				<CardImg width="100%" src={imageUrl + dish.image} alt={dish.name} />
 				<CardImgOverlay>
 					<CardTitle>{dish.name}</CardTitle>
 				</CardImgOverlay>

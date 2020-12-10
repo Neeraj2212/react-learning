@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -6,11 +6,11 @@ import {
 	CardBody,
 	CardHeader,
 	Media,
-} from 'reactstrap';
-import { baseUrl } from '../shared/baseUrl';
-import { Link } from 'react-router-dom';
-import { Stagger, Fade } from 'react-animation-components';
-import { Loading } from './LoadingComponent';
+} from "reactstrap";
+import { imageUrl } from "../shared/baseUrl";
+import { Link } from "react-router-dom";
+import { Stagger, Fade } from "react-animation-components";
+import { Loading } from "./LoadingComponent";
 
 function RenderLeader(props) {
 	return (
@@ -18,7 +18,7 @@ function RenderLeader(props) {
 			<Media left>
 				<Media
 					object
-					src={baseUrl + props.leader.image}
+					src={imageUrl + props.leader.image}
 					alt={props.leader.name}
 				></Media>
 			</Media>
@@ -90,7 +90,7 @@ function About(props) {
 						will arrive on your plate the next time you visit us.
 					</p>
 					<p>
-						The restaurant traces its humble beginnings to{' '}
+						The restaurant traces its humble beginnings to{" "}
 						<em>The Frying Pan</em>, a successful chain started by our CEO, Mr.
 						Peter Pan, that featured for the first time the world's best
 						cuisines in a pan.
