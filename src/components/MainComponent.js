@@ -103,17 +103,17 @@ class Main extends Component {
 						timeout={300}
 					>
 						<Switch>
-							<Route path="/home" component={HomePage} />
+							<Route path="/react-learning/home" component={HomePage} />
 							<Route
 								exact
-								path="/menu"
+								path="/react-learning/menu"
 								component={() => <Menu dishes={this.props.dishes} />}
 							/>
-							<Route path="/menu/:dishId" component={DishWithId}></Route>
+							<Route path="/react-learning/menu/:dishId" component={DishWithId}></Route>
 
 							<Route
 								exact
-								path="/aboutus"
+								path="/react-learning/aboutus"
 								component={() => (
 									<About
 										leaders={this.props.leaders.leaders}
@@ -124,7 +124,7 @@ class Main extends Component {
 							/>
 							<Route
 								exact
-								path="/contactus"
+								path="/react-learning/contactus"
 								component={() => (
 									<Contact
 										resetFeedbackForm={this.props.resetFeedbackForm}
@@ -132,7 +132,7 @@ class Main extends Component {
 									/>
 								)}
 							/>
-							<Redirect to="/home" />
+							<Redirect to="/react-learning" />
 						</Switch>
 					</CSSTransition>
 				</TransitionGroup>
